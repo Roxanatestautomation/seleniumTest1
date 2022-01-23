@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+// folosim fisiere de configurare pentru a stoca proprietati,
+// care pot sa fie diferite in functie de masina pe care executam testele sau in functie de mediul testat
+
+
 public class AppConfig {
     private static Properties properties = new Properties ();
 

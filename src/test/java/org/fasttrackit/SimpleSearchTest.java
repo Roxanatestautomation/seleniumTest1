@@ -16,11 +16,11 @@ public class SimpleSearchTest {
 
     @Test
     public void simpleSearchWithOneKeyword1 () {
-        System.setProperty("webdriver.chrome.driver", "C:\\Webdrivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", AppConfig.getChromeDriverPath());
         WebDriver driver = new ChromeDriver();
 
         //dechiderea unui browser//
-        driver.get("http://testfasttrackit.info/selenium-test/");
+        driver.get(AppConfig.getSiteUrl());
 
         //respectarea principiului do not repeat, principiul sigurantei este respectat
         String searchKeyword = "vase";

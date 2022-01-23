@@ -23,7 +23,7 @@ public class SimpleSearchTest {
         driver.get("http://testfasttrackit.info/selenium-test/");
 
         //respectarea principiului do not repeat, principiul sigurantei este respectat
-        String searchKeyword = "camera";
+        String searchKeyword = "vase";
 
         //interactionarea cu elementele din pagina,
         // cauta elementul: campul de cautare (search) si a introduce un text in el//

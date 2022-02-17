@@ -12,7 +12,9 @@ public class AppConfig {
     private static Properties properties = new Properties ();
 
     static {
-        InputStream inputStream = AppConfig.class.getClassLoader().getResourceAsStream("production.properties");
+        String environment = System.getProperty("env","production");
+
+        InputStream inputStream = AppConfig.class.getClassLoader().getResourceAsStream(environment +".properties");
 
         try {
             properties.load(inputStream);

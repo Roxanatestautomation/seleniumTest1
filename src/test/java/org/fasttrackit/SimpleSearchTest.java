@@ -12,12 +12,10 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SimpleSearchTest {
+public class SimpleSearchTest extends TestBase {
 
     @Test
     public void simpleSearchWithOneKeyword1 () {
-        System.setProperty("webdriver.chrome.driver", AppConfig.getChromeDriverPath());
-        WebDriver driver = new ChromeDriver();
 
         //dechiderea unui browser//
         driver.get(AppConfig.getSiteUrl());

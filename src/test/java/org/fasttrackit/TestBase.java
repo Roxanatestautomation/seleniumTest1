@@ -3,7 +3,6 @@ package org.fasttrackit;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestBase {
 
@@ -11,9 +10,8 @@ public class TestBase {
 
     @Before
     public void setUp () {
-        System.setProperty("webdriver.chrome.driver", AppConfig.getChromeDriverPath());
-
-        driver = new ChromeDriver();
+        String browser = System.getProperty("browser", "chrome");
+        driver = DriverFactory.getDriver(browser);
     }
 
     @After

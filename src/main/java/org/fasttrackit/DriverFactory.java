@@ -3,8 +3,11 @@ package org.fasttrackit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
-public class DriverFactory {
+import java.util.concurrent.TimeUnit;
+
+public class DriverFactory { //clasa destinata pt crearaea si administratea driver-ul
 
     public static WebDriver getDriver (String browser) {
 
@@ -21,9 +24,14 @@ public class DriverFactory {
                 System.setProperty("webdriver.gecko.driver", AppConfig.getGeckoDriverPath());
                 driver = new FirefoxDriver();
                 break;
+            case "ie":
+                System.setProperty("webdriver.ie.driver", AppConfig.getInternetExplorerDriverPath());
+                driver = new InternetExplorerDriver();
+                break;
         }
 
-
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         return driver;
     }

@@ -14,7 +14,7 @@ public class SimpleSearchTest extends TestBase {
     @Test
     public void simpleSearchWithOneKeyword1() {
 
-        driver.get(AppConfig.getSiteUrl());
+        openHomePage();
 
         Header header = PageFactory.initElements(driver, Header.class);
 

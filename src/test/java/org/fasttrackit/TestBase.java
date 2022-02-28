@@ -18,4 +18,9 @@ public class TestBase {
     public void tearDown () {
     //    driver.quit();
     }
+
+    public void openHomePage() {
+        driver.get(AppConfig.getSiteUrl());
+    }
+
 }

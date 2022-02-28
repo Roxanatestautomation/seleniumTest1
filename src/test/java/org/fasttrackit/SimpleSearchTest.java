@@ -1,13 +1,10 @@
 package org.fasttrackit;
 
+import org.fasttrackit.webviews.Header;
+import org.fasttrackit.webviews.ProductsGrid;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.List;
+import org.openqa.selenium.support.PageFactory;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,31 +12,23 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class SimpleSearchTest extends TestBase {
 
     @Test
-    public void simpleSearchWithOneKeyword1 () {
+    public void simpleSearchWithOneKeyword1() {
 
-        //dechiderea unui browser//
         driver.get(AppConfig.getSiteUrl());
 
-        //respectarea principiului do not repeat, principiul sigurantei este respectat
-        String searchKeyword = "vase";
+        Header header = PageFactory.initElements(driver, Header.class);
 
-        //interactionarea cu elementele din pagina,
-        // cauta elementul: campul de cautare (search) si a introduce un text in el//
-        driver.findElement(By.id("search")).sendKeys(searchKeyword + Keys.ENTER);
+        String searchKeyword = "vase";
+        header.search(searchKeyword);
 
         System.out.println("Press Enter in search field.");
 
-        //adaugarea unui produs in cos//
-        //driver.findElement(By.xpath("//div[@class = 'product-info' and ./descendant:: *[text() = 'Herald Glass Vase']]//button[@title='Add to Cart']")).click();
+        ProductsGrid productsGrid = PageFactory.initElements(driver, ProductsGrid.class);
 
-        // stocarea elementelor intr-o lista, II mode h2.product-name > a//
-        List<WebElement> productNames = driver.findElements(By.cssSelector("h2.product-name a"));
+        System.out.println("Stored " + productsGrid.getProductNames().size() + " product names.");
 
-        System.out.println("Stored " + productNames.size() + " product names.");
-
-        //cum identificam erori/bug-ri cu ajutorul testelor automate, test daca keyword vase se afla in toate produsele de pe pagina
-        for(WebElement productName : productNames) {
-          assertThat("Some of the products`names do not contain the searched keyword.", productName.getText(), containsString(searchKeyword.toUpperCase()));
+        for (WebElement productName : productsGrid.getProductNames()) {
+            assertThat("Some of the products`names do not contain the searched keyword.", productName.getText(), containsString(searchKeyword.toUpperCase()));
         }
     }
 }

@@ -1,5 +1,6 @@
-package org.fasttrackit;
+package org.fasttrackit.search;
 
+import org.fasttrackit.TestBase;
 import org.fasttrackit.webviews.Header;
 import org.fasttrackit.webviews.ProductsGrid;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class SimpleSearchTest extends TestBase {
 
     @Parameterized.Parameters
     public static List<String> data() {
-        return Arrays.asList("vase, camera");
+        return Arrays.asList("vase", "camera");
     }
 
     @Test
@@ -37,7 +38,7 @@ public class SimpleSearchTest extends TestBase {
 
         header.search(searchKeyword);
 
-        System.out.println("Press Enter in search field.");
+        System.out.println("Press Enter in org.fasttrackit.search field.");
 
         ProductsGrid productsGrid = PageFactory.initElements(driver, ProductsGrid.class);
 
